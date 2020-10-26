@@ -1,0 +1,103 @@
+{
+    "workDir": ".",
+    "dependencies": [
+        {
+            "name": "privatesky",
+            "src": "http://github.com/privatesky/privatesky.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd privatesky && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd privatesky && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "cardinal",
+            "src": "http://github.com/privatesky/cardinal.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd cardinal && npm install"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd cardinal && npm run build"
+                }
+            ]
+        },
+        {
+            "name": "menu-wallet-prototype",
+            "src": "http://github.com/privatesky/menu-wallet-prototype.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd menu-wallet-prototype && npm install"
+                }
+            ]
+        },
+        {
+            "name": "web-server/tutorial/loader",
+            "src": "https://github.com/PrivateSky/trust-loader",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/tutorial/loader && npm install"
+                }
+            ]
+        }
+    ],
+    "build": [
+        {
+            "name": "cardinal-wallet-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd cardinal && npm run build-dossier"
+                }
+            ]
+        },
+        {
+            "name": "tutorial_bind_to_menu-wallet-prototype",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd menu-wallet-prototype && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./menu-wallet-prototype/seed",
+                    "target": "./web-server/tutorial/wallet-template/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        }
+    ]
+}
