@@ -101,7 +101,7 @@
         },
         {
             "name": "psk-marketplace-ssapp",
-            "src": "https://github.com/RomSoftIasi/psk-marketplace-ssapp.git",
+            "src": "https://github.com/PrivateSky/psk-marketplace-ssapp.git",
             "actions": [
                 {
                     "type": "smartClone",
