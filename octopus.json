@@ -85,6 +85,51 @@
             ]
         },
         {
+            "name": "psk-marketplace-ssapp",
+            "src": "https://github.com/PrivateSky/psk-marketplace-ssapp.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd psk-marketplace-ssapp && npm install"
+                }
+            ]
+        },
+        {
+            "name": "psk-authenticator",
+            "src": "https://www.github.com/PrivateSky/psk-authenticator.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd psk-authenticator && npm install"
+                }
+            ]
+        },
+        {
+            "name": "password-manager",
+            "src": "https://www.github.com/PrivateSky/password-manager.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd password-manager && npm install"
+                }
+            ]
+        },
+        {
             "name": "themes/blue-fluorite-theme",
             "src": "https://github.com/PrivateSky/blue-fluorite-theme.git",
             "actions": [
@@ -100,8 +145,8 @@
             ]
         },
         {
-            "name": "psk-marketplace-ssapp",
-            "src": "https://github.com/PrivateSky/psk-marketplace-ssapp.git",
+            "name": "themes/summer-vibes-theme",
+            "src": "https://www.github.com/PrivateSky/summer-vibes-theme.git",
             "actions": [
                 {
                     "type": "smartClone",
@@ -110,7 +155,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd psk-marketplace-ssapp && npm install"
+                    "cmd": "cd themes/summer-vibes-theme && npm install"
                 }
             ]
         }
@@ -133,6 +178,16 @@
                 {
                     "type": "execute",
                     "cmd": "cd themes/blue-fluorite-theme && npm run build-dossier"
+                }
+            ]
+        },
+        {
+            "name": "summer-vibes-theme-wallet-build",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd themes/summer-vibes-theme && npm run build-dossier"
                 }
             ]
         },
@@ -177,28 +232,6 @@
             ]
         },
         {
-            "name": "dossier-explorer-wallet-prototype_bind_to_psk-marketplace-ssapp",
-            "src": "",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "cd psk-marketplace-ssapp && npm run build"
-                },
-                {
-                    "type": "copy",
-                    "src": "./psk-marketplace-ssapp/seed",
-                    "target": "./web-server/dossier-explorer-wallet-prototype/apps/psk-marketplace-ssapp/seed",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dossier-explorer-wallet-prototype/apps/psk-marketplace-ssapp/readme"
-                }
-            ]
-        },
-        {
             "name": "web-wallet_bind_to_psk-marketplace-ssapp",
             "src": "",
             "actions": [
@@ -217,6 +250,50 @@
                 {
                     "type": "execute",
                     "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/psk-marketplace-ssapp/readme"
+                }
+            ]
+        },
+        {
+            "name": "web-wallet_bind_to_password-manager",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd password-manager && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./password-manager/seed",
+                    "target": "./web-server/web-wallet/apps/password-manager/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/password-manager/readme"
+                }
+            ]
+        },
+        {
+            "name": "web-wallet_bind_to_psk-authenticator",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd psk-authenticator && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./psk-authenticator/seed",
+                    "target": "./web-server/web-wallet/apps/psk-authenticator/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/psk-authenticator/readme"
                 }
             ]
         }

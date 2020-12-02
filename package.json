@@ -1,5 +1,5 @@
 {
-  "name": "tutorial-workspace",
+  "name": "dsu-explorer-workspace",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PrivateSky/tutorial-workspace.git"
+    "url": "git+https://github.com/PrivateSky/dsu-explorer-workspace.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PrivateSky/tutorial-workspace/issues"
+    "url": "https://github.com/PrivateSky/dsu-explorer-workspace/issues"
   },
-  "homepage": "https://github.com/PrivateSky/tutorial-workspace#readme",
+  "homepage": "https://github.com/PrivateSky/dsu-explorer-workspace#readme",
   "dependencies": {
     "octopus": "git+http://github.com/privatesky/octopus.git#1.0.5"
   }
