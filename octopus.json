@@ -40,7 +40,7 @@
             ]
         },
         {
-            "name": "web-server/web-wallet/loader",
+            "name": "web-server/dsu-explorer/loader",
             "src": "http://github.com/privatesky/trust-loader.git",
             "actions": [
                 {
@@ -50,7 +50,15 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd web-server/web-wallet/loader && npm install"
+                    "cmd": "cd web-server/dsu-explorer/loader && npm install"
+                },
+				{
+                    "type": "copy",
+                    "src": "web-server/dsu-explorer/loader/loader-config.local.json-template",
+                    "target": "web-server/dsu-explorer/loader/loader-config.local.json",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
@@ -161,6 +169,19 @@
         }
     ],
     "build": [
+		{
+			"name": "ssapp-config",
+			"actions": [
+				{
+					"type": "copy",
+                    "src": "./ssapp-config",
+                    "target": "./",
+                    "options": {
+                        "overwrite": true
+                    }
+				}
+			]
+		},
         {
             "name": "cardinal-wallet-build",
             "src": "",
@@ -192,7 +213,7 @@
             ]
         },
         {
-            "name": "web-wallet_bind_to_dossier-explorer-ssapp",
+            "name": "dsu-explorer_bind_to_dossier-explorer-ssapp",
             "src": "",
             "actions": [
                 {
@@ -202,19 +223,19 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-ssapp/seed",
-                    "target": "./web-server/web-wallet/apps/dossier-explorer-ssapp/seed",
+                    "target": "./web-server/dsu-explorer/apps/dossier-explorer-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/dossier-explorer-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/dossier-explorer-ssapp/readme"
                 }
             ]
         },
         {
-            "name": "web-wallet_bind_to_dossier-explorer-wallet-prototype",
+            "name": "dsu-explorer_bind_to_dossier-explorer-wallet-prototype",
             "src": "",
             "actions": [
                 {
@@ -224,7 +245,7 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-wallet-prototype/seed",
-                    "target": "./web-server/web-wallet/wallet-template/seed",
+                    "target": "./web-server/dsu-explorer/wallet-template/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -232,7 +253,7 @@
             ]
         },
         {
-            "name": "web-wallet_bind_to_psk-marketplace-ssapp",
+            "name": "dsu-explorer_bind_to_psk-marketplace-ssapp",
             "src": "",
             "actions": [
                 {
@@ -242,19 +263,19 @@
                 {
                     "type": "copy",
                     "src": "./psk-marketplace-ssapp/seed",
-                    "target": "./web-server/web-wallet/apps/psk-marketplace-ssapp/seed",
+                    "target": "./web-server/dsu-explorer/apps/psk-marketplace-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/psk-marketplace-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/psk-marketplace-ssapp/readme"
                 }
             ]
         },
         {
-            "name": "web-wallet_bind_to_password-manager",
+            "name": "dsu-explorer_bind_to_password-manager",
             "src": "",
             "actions": [
                 {
@@ -264,19 +285,19 @@
                 {
                     "type": "copy",
                     "src": "./password-manager/seed",
-                    "target": "./web-server/web-wallet/apps/password-manager/seed",
+                    "target": "./web-server/dsu-explorer/apps/password-manager/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/password-manager/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/password-manager/readme"
                 }
             ]
         },
         {
-            "name": "web-wallet_bind_to_psk-authenticator",
+            "name": "dsu-explorer_bind_to_psk-authenticator",
             "src": "",
             "actions": [
                 {
@@ -286,14 +307,36 @@
                 {
                     "type": "copy",
                     "src": "./psk-authenticator/seed",
-                    "target": "./web-server/web-wallet/apps/psk-authenticator/seed",
+                    "target": "./web-server/dsu-explorer/apps/psk-authenticator/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/web-wallet/apps/psk-authenticator/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/psk-authenticator/readme"
+                }
+            ]
+        },
+		{
+            "name": "trust-loader-config",
+            "actions": [
+                {
+                    "type": "copy",
+                    "src": "./trust-loader-config",
+                    "target": "./web-server",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "copy-bundles",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/dsu-explorer/loader && npm install"
                 }
             ]
         }

@@ -1,0 +1,12 @@
+{
+    "psk-authenticator": {
+        "name": "Authenticator",
+        "description": "Authenticator",
+        "image": "authenticator"
+    },
+    "password-manager": {
+        "name": "Passwords Manager",
+        "description": "Passwords Manager",
+        "image": "password-manager"
+    }
+}

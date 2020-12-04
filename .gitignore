@@ -12,3 +12,7 @@
 !package-lock.json
 !README.md
 !CHANGELOG
+!ssapp-config
+!ssapp-config/**
+!trust-loader-config
+!trust-loader-config/**
