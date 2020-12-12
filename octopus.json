@@ -52,13 +52,28 @@
                     "type": "execute",
                     "cmd": "cd web-server/dsu-explorer/loader && npm install"
                 },
-				{
+                {
                     "type": "copy",
                     "src": "web-server/dsu-explorer/loader/loader-config.local.json-template",
                     "target": "web-server/dsu-explorer/loader/loader-config.local.json",
                     "options": {
                         "overwrite": true
                     }
+                }
+            ]
+        },
+        {
+            "name": "web-server/bpd-wallet/loader",
+            "src": "http://github.com/privatesky/trust-loader.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/bpd-wallet/loader && npm install"
                 }
             ]
         },
@@ -138,6 +153,21 @@
             ]
         },
         {
+            "name": "bpd-ssapp",
+            "src": "https://github.com/PrivateSky/bpd.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd bpd-ssapp && npm install"
+                }
+            ]
+        },
+        {
             "name": "themes/blue-fluorite-theme",
             "src": "https://github.com/PrivateSky/blue-fluorite-theme.git",
             "actions": [
@@ -166,22 +196,37 @@
                     "cmd": "cd themes/summer-vibes-theme && npm install"
                 }
             ]
+        },
+        {
+            "name": "menu-wallet-prototype",
+            "src": "https://github.com/PrivateSky/menu-wallet-prototype.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd menu-wallet-prototype && npm install"
+                }
+            ]
         }
     ],
     "build": [
-		{
-			"name": "ssapp-config",
-			"actions": [
-				{
-					"type": "copy",
+        {
+            "name": "ssapp-config",
+            "actions": [
+                {
+                    "type": "copy",
                     "src": "./ssapp-config",
                     "target": "./",
                     "options": {
                         "overwrite": true
                     }
-				}
-			]
-		},
+                }
+            ]
+        },
         {
             "name": "cardinal-wallet-build",
             "src": "",
@@ -223,14 +268,14 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-ssapp/seed",
-                    "target": "./web-server/dsu-explorer/apps/dossier-explorer-ssapp/seed",
+                    "target": "./web-server/dsu-explorer/apps-patch/dossier-explorer-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/dossier-explorer-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps-patch/dossier-explorer-ssapp/readme"
                 }
             ]
         },
@@ -245,7 +290,7 @@
                 {
                     "type": "copy",
                     "src": "./dossier-explorer-wallet-prototype/seed",
-                    "target": "./web-server/dsu-explorer/wallet-template/seed",
+                    "target": "./web-server/dsu-explorer/wallet-patch/seed",
                     "options": {
                         "overwrite": true
                     }
@@ -263,14 +308,14 @@
                 {
                     "type": "copy",
                     "src": "./psk-marketplace-ssapp/seed",
-                    "target": "./web-server/dsu-explorer/apps/psk-marketplace-ssapp/seed",
+                    "target": "./web-server/dsu-explorer/apps-patch/psk-marketplace-ssapp/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/psk-marketplace-ssapp/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps-patch/psk-marketplace-ssapp/readme"
                 }
             ]
         },
@@ -285,14 +330,14 @@
                 {
                     "type": "copy",
                     "src": "./password-manager/seed",
-                    "target": "./web-server/dsu-explorer/apps/password-manager/seed",
+                    "target": "./web-server/dsu-explorer/apps-patch/password-manager/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/password-manager/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps-patch/password-manager/readme"
                 }
             ]
         },
@@ -307,18 +352,40 @@
                 {
                     "type": "copy",
                     "src": "./psk-authenticator/seed",
-                    "target": "./web-server/dsu-explorer/apps/psk-authenticator/seed",
+                    "target": "./web-server/dsu-explorer/apps-patch/psk-authenticator/seed",
                     "options": {
                         "overwrite": true
                     }
                 },
                 {
                     "type": "execute",
-                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps/psk-authenticator/readme"
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/dsu-explorer/apps-patch/psk-authenticator/readme"
                 }
             ]
         },
-		{
+        {
+            "name": "bpd-wallet_bind_to_bpd-ssapp",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd bpd-ssapp && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./bpd-ssapp/seed",
+                    "target": "./web-server/bpd-wallet/apps-patch/bpd-ssapp/seed",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "execute",
+                    "cmd": "echo Use this folder template in order to customize the application instance by adding configuration, pages etc. > ./web-server/bpd-wallet/apps-patch/bpd-ssapp/readme"
+                }
+            ]
+        },
+        {
             "name": "trust-loader-config",
             "actions": [
                 {
@@ -337,6 +404,33 @@
                 {
                     "type": "execute",
                     "cmd": "cd web-server/dsu-explorer/loader && npm install"
+                }
+            ]
+        },
+        {
+            "name": "copy-bundles",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd web-server/bpd-wallet/loader && npm install"
+                }
+            ]
+        },
+        {
+            "name": "bpd-wallet_bind_to_menu-wallet-prototype",
+            "src": "",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd menu-wallet-prototype && npm run build"
+                },
+                {
+                    "type": "copy",
+                    "src": "./menu-wallet-prototype/seed",
+                    "target": "./web-server/bpd-wallet/wallet-patch/seed",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         }
